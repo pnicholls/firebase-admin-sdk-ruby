@@ -17,6 +17,17 @@ module Firebase
           @client = Firebase::Admin::Internal::HTTPClient.new(uri: uri, credentials: credentials)
         end
 
+        # Lists user accounts
+        # @param [Integer, nil] maximum number of results, needs to be less than 1000
+        # @param [String, nil] token of the next paginated page
+        def list_users(max_results: nil, next_page_token: nil)
+          payload = {
+            maxResults: max_results,
+            nextPageToken: next_page_token
+          }.compact
+          @client.get(with_path("/accounts:batchGet"), payload).body
+        end
+
         # Creates a new user account with the specified properties.
         #
         # @param [String, nil] uid The id to assign to the newly created user.

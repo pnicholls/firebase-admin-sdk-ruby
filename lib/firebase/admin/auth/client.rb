@@ -52,6 +52,13 @@ module Firebase
           )
         end
 
+        # Lists the users
+        # @param [Integer, nil] maximum number of results, needs to be less than 1000
+        # @param [String, nil] token of the next paginated page
+        def list_users(max_results: 1000, next_page_token: nil)
+          @user_manager.list_users(max_results: max_results, next_page_token: next_page_token)
+        end
+
         # Gets the user corresponding to the specified user id.
         #
         # @param [String] uid
