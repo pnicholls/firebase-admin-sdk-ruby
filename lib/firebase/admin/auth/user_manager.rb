@@ -25,7 +25,7 @@ module Firebase
             maxResults: max_results,
             nextPageToken: next_page_token
           }.compact
-          @client.get(with_path("/accounts:batchGet"), payload).body
+          @client.get(with_path("accounts:batchGet"), payload).body
         end
 
         # Creates a new user account with the specified properties.
