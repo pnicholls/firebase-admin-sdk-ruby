@@ -59,6 +59,22 @@ module Firebase
           get_user_by(uid: uid)
         end
 
+        # Updates a user account with the specified properties.
+        #
+        # @param [String, nil] uid The id of the user.
+        # @param [String, nil] password The user’s raw, unhashed password.
+        #
+        # @raise [UpdateUserError] if a user cannot be updated.
+        #
+        # @return [UserRecord]
+        def update_user(uid:, password: nil)
+          payload = {
+            idToken: validate_uid(uid),
+            password: validate_password(password),
+          }.compact
+          @client.post(with_path("accounts:update"), payload).body
+        end
+
         # Gets the user corresponding to the provided key
         #
         # @param [Hash] query Query parameters to search for a user by.

@@ -52,6 +52,21 @@ module Firebase
           )
         end
 
+        # Updates a user account with the specified properties.
+        #
+        # @param [String, nil] uid The id of the user to update
+        # @param [String, nil] password The user’s raw, unhashed password.
+        #
+        # @raise [UpdateUserError] if a user cannot be updated.
+        #
+        # @return [UserRecord]
+        def update_user(uid:, password:)
+          @user_manager.update_user(
+            uid: uid,
+            password: password
+          )
+        end
+
         # Lists the users
         # @param [Integer, nil] maximum number of results, needs to be less than 1000
         # @param [String, nil] token of the next paginated page
