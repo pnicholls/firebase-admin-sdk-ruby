@@ -60,9 +60,10 @@ module Firebase
         # @raise [UpdateUserError] if a user cannot be updated.
         #
         # @return [UserRecord]
-        def update_user(uid:, password:)
+        def update_user(uid:, email:, password:)
           @user_manager.update_user(
             uid: uid,
+            email: email,
             password: password
           )
         end

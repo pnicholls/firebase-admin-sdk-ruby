@@ -67,9 +67,10 @@ module Firebase
         # @raise [UpdateUserError] if a user cannot be updated.
         #
         # @return [UserRecord]
-        def update_user(uid:, password: nil)
+        def update_user(uid:, email: nil, password: nil)
           payload = {
             idToken: validate_uid(uid),
+            email: validate_email(email)
             password: validate_password(password),
           }.compact
           @client.post(with_path("accounts:update"), payload).body
