@@ -102,6 +102,10 @@ module Firebase
           @user_manager.get_user_by(phone_number: phone_number)
         end
 
+        def exchange_custom_token_for_id_token(custom_token:)
+          @user_manager.exchange_custom_token_for_id_token(custom_token: custom_token)
+        end 
+
         # Deletes the user corresponding to the specified user id.
         #
         # @param [String] uid

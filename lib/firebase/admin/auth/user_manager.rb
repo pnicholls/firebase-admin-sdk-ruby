@@ -107,6 +107,14 @@ module Firebase
           @client.post(with_path("accounts:delete"), {localId: validate_uid(uid, required: true)})
         end
 
+        def exchange_custom_token_for_id_token(custom_token:)
+          payload = {
+            token: custom_token,
+            returnSecureToken: true
+          }.compact
+          @client.post(with_path("accounts:signInWithCustomToken"), payload).body
+        end
+
         private
 
         def with_path(path)
