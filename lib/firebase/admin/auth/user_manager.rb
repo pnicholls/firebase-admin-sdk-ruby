@@ -69,7 +69,7 @@ module Firebase
         # @return [UserRecord]
         def update_user(uid:, email: nil, password: nil)
           payload = {
-            idToken: validate_uid(uid),
+            localId: validate_uid(uid),
             email: validate_email(email),
             password: validate_password(password),
           }.compact
